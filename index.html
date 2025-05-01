@@ -249,16 +249,29 @@
 
         function getMainTablePosition(atomicNumber) {
             atomicNumber = parseInt(atomicNumber);
+            // Periyot 1
             if (atomicNumber === 1) return {row: 1, col: 1};
             if (atomicNumber === 2) return {row: 1, col: 18};
+            // Periyot 2
             if (atomicNumber >= 3 && atomicNumber <= 4) return {row: 2, col: atomicNumber - 2};
             if (atomicNumber >= 5 && atomicNumber <= 10) return {row: 2, col: atomicNumber + 8};
+            // Periyot 3
             if (atomicNumber >= 11 && atomicNumber <= 12) return {row: 3, col: atomicNumber - 10};
             if (atomicNumber >= 13 && atomicNumber <= 18) return {row: 3, col: atomicNumber - 4};
+            // Periyot 4
             if (atomicNumber >= 19 && atomicNumber <= 36) return {row: 4, col: atomicNumber - 18};
+            // Periyot 5
             if (atomicNumber >= 37 && atomicNumber <= 54) return {row: 5, col: atomicNumber - 36};
-            if (atomicNumber >= 55 && atomicNumber <= 86) return {row: 6, col: atomicNumber - 54};
-            if (atomicNumber >= 87 && atomicNumber <= 118) return {row: 7, col: atomicNumber - 86};
+            // Periyot 6 (Lantanidler hariç)
+            if (atomicNumber === 55) return {row: 6, col: 1};
+            if (atomicNumber === 56) return {row: 6, col: 2};
+            if (atomicNumber === 57) return {row: 6, col: 3}; // Lantanidler için yer tutucu
+            if (atomicNumber >= 72 && atomicNumber <= 86) return {row: 6, col: atomicNumber - 68};
+            // Periyot 7 (Aktinidler hariç)
+            if (atomicNumber === 87) return {row: 7, col: 1};
+            if (atomicNumber === 88) return {row: 7, col: 2};
+            if (atomicNumber === 89) return {row: 7, col: 3}; // Aktinidler için yer tutucu
+            if (atomicNumber >= 104 && atomicNumber <= 118) return {row: 7, col: atomicNumber - 100};
             return null;
         }
 
