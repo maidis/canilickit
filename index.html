@@ -63,95 +63,61 @@
             font-size: 10px;
         }
         .tooltip {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: #fff; /* Beyaz arka plan */
-    border: 1px solid #000;
-    padding: 5px;
-    z-index: 10;
-    width: 250px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    color: black; /* Tooltip içindeki metinler siyah */
-}
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #fff;
+            border: 1px solid #000;
+            padding: 5px;
+            z-index: 10;
+            width: 250px;
+            max-width: 90vw;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            color: black;
+            overflow-wrap: break-word;
+        }
+        .tooltip img {
+            max-height: 100px;
+            max-width: 100%;
+            display: block;
+            margin: 0 auto 5px;
+        }
         .element:hover .tooltip {
             display: block;
         }
-        .element.yes { background-color: #90EE90; } /* Solgun yeşil */
-        .element.maybenot { background-color: #008000; /* Koyu yeşil */}
-        .element.dont { background-color: #FFFF00; } /* Sarı */
-        .element.deadly { background-color: #FF0000; /* Kırmızı */}
-        .yes { color: #006400; font-weight: bold; } /* Koyu yeşil */
-        .maybenot { color: #008000; font-weight: bold; } /* Yeşil */
-        .dont { color: #FFA500; font-weight: bold; } /* Turuncu */
-
-        /* Element kutucuklarındaki sembol ve numara için beyaz renk */
-.element.maybenot .symbol, .element.maybenot .number {
-    color: white;
-}
-.element.deadly .symbol, .element.deadly .number {
-    color: white;
-}
+        .element.yes { background-color: #90EE90; }
+        .element.maybenot { background-color: #008000; }
+        .element.dont { background-color: #FFFF00; }
+        .element.deadly { background-color: #FF0000; }
+        .element.maybenot .symbol, .element.maybenot .number { color: white; }
+        .element.deadly .symbol, .element.deadly .number { color: white; }
+        .yes { color: #006400; font-weight: bold; }
+        .maybenot { color: #008000; font-weight: bold; }
+        .dont { color: #FFA500; font-weight: bold; }
 
         /* Responsive Tasarım */
         @media (max-width: 1200px) {
-            .main-table {
-                grid-template-rows: repeat(7, 50px);
-            }
-            .lanthanide-actinide-table {
-                grid-template-rows: repeat(2, 50px);
-            }
-            .element {
-                font-size: 10px;
-            }
-            .symbol {
-                font-size: 14px;
-            }
-            .number {
-                font-size: 8px;
-            }
+            .main-table { grid-template-rows: repeat(7, 50px); }
+            .lanthanide-actinide-table { grid-template-rows: repeat(2, 50px); }
+            .element { font-size: 10px; }
+            .symbol { font-size: 14px; }
+            .number { font-size: 8px; }
         }
         @media (max-width: 768px) {
-            .main-table {
-                grid-template-columns: repeat(18, 40px);
-                grid-template-rows: repeat(7, 40px);
-            }
-            .lanthanide-actinide-table {
-                grid-template-columns: repeat(15, 40px);
-                grid-template-rows: repeat(2, 40px);
-            }
-            .element {
-                font-size: 8px;
-                padding: 2px;
-            }
-            .symbol {
-                font-size: 12px;
-            }
-            .number {
-                font-size: 6px;
-            }
+            .main-table { grid-template-columns: repeat(18, 40px); grid-template-rows: repeat(7, 40px); }
+            .lanthanide-actinide-table { grid-template-columns: repeat(15, 40px); grid-template-rows: repeat(2, 40px); }
+            .element { font-size: 8px; padding: 2px; }
+            .symbol { font-size: 12px; }
+            .number { font-size: 6px; }
         }
         @media (max-width: 480px) {
-            .main-table {
-                grid-template-columns: repeat(18, 30px);
-                grid-template-rows: repeat(7, 30px);
-            }
-            .lanthanide-actinide-table {
-                grid-template-columns: repeat(15, 30px);
-                grid-template-rows: repeat(2, 30px);
-            }
-            .element {
-                font-size: 6px;
-                padding: 1px;
-            }
-            .symbol {
-                font-size: 10px;
-            }
-            .number {
-                font-size: 5px;
-            }
+            .main-table { grid-template-columns: repeat(18, 30px); grid-template-rows: repeat(7, 30px); }
+            .lanthanide-actinide-table { grid-template-columns: repeat(15, 30px); grid-template-rows: repeat(2, 30px); }
+            .element { font-size: 6px; padding: 1px; }
+            .symbol { font-size: 10px; }
+            .number { font-size: 5px; }
         }
     </style>
 </head>
@@ -191,124 +157,124 @@
         };
 
         const elementsData = {
-            "1": {"symbol": "H", "name": {"tr": "Hidrojen", "en": "Hydrogen"}, "description": {"en": "Hydrogen is a very common gas. Since it’s a gas, you can’t really lick it, but if you could, it wouldn’t harm you.", "tr": "Hidrojen çok yaygın bir gazdır. Gaz olduğu için yalanamaz, ama yalansaydı zarar vermezdi."}},
-            "2": {"symbol": "He", "name": {"tr": "Helyum", "en": "Helium"}, "description": {"en": "Used in balloons to make your voice squeaky. You’ve probably inhaled it, so licking it is fine.", "tr": "Balonlarda sesinizi incelten gaz. Muhtemelen soludunuz, yalamak sorun olmaz."}},
-            "3": {"symbol": "Li", "name": {"tr": "Lityum", "en": "Lithium"}, "description": {"en": "Found in batteries. Licking it can cause burns and isn’t recommended.", "tr": "Pillerde bulunur. Yalamak yanıklara neden olabilir, önerilmez."}},
-            "4": {"symbol": "Be", "name": {"tr": "Berilyum", "en": "Beryllium"}, "description": {"en": "Used in alloys. Contact can cause irritation or berylliosis. Don’t lick.", "tr": "Alaşımlarda kullanılır. Temas tahrişe veya berilyoza neden olabilir. Yalamayın."}},
-            "5": {"symbol": "B", "name": {"tr": "Bor", "en": "Boron"}, "description": {"en": "A small lick won’t hurt, though large amounts affect kidneys.", "tr": "Küçük bir yalama zarar vermez, ama fazla miktarda böbreklere etki eder."}},
-            "6": {"symbol": "C", "name": {"tr": "Karbon", "en": "Carbon"}, "description": {"en": "Essential for life. You’ve probably ingested some form of it.", "tr": "Yaşam için gereklidir. Muhtemelen bir formunu yediniz."}},
-            "7": {"symbol": "N", "name": {"tr": "Azot", "en": "Nitrogen"}, "description": {"en": "Makes up most of the air. Safe to lick.", "tr": "Havanın çoğunu oluşturur. Yalamak güvenlidir."}},
-            "8": {"symbol": "O", "name": {"tr": "Oksijen", "en": "Oxygen"}, "description": {"en": "You breathe it. Safe.", "tr": "Soluduğunuz gaz. Güvenli."}},
-            "9": {"symbol": "F", "name": {"tr": "Flor", "en": "Fluorine"}, "description": {"en": "Highly reactive and toxic. Do not lick.", "tr": "Çok reaktif ve toksik. Yalamayın."}},
-            "10": {"symbol": "Ne", "name": {"tr": "Neon", "en": "Neon"}, "description": {"en": "Inert gas used in signs. Safe.", "tr": "Tabelalarda kullanılan inert gaz. Güvenli."}},
-            "11": {"symbol": "Na", "name": {"tr": "Sodyum", "en": "Sodium"}, "description": {"en": "Reacts with water. Can cause burns. Don’t lick.", "tr": "Su ile reaksiyona girer. Yanıklara neden olabilir. Yalamayın."}},
-            "12": {"symbol": "Mg", "name": {"tr": "Magnezyum", "en": "Magnesium"}, "description": {"en": "Used in medicine and alloys. Safe to lick.", "tr": "Tıpta ve alaşımlarda kullanılır. Yalamak güvenlidir."}},
-            "13": {"symbol": "Al", "name": {"tr": "Alüminyum", "en": "Aluminum"}, "description": {"en": "Common metal. Safe to lick.", "tr": "Yaygın metal. Yalamak güvenlidir."}},
-            "14": {"symbol": "Si", "name": {"tr": "Silikon", "en": "Silicon"}, "description": {"en": "Used in electronics. Safe.", "tr": "Elektronikte kullanılır. Güvenli."}},
-            "15": {"symbol": "P", "name": {"tr": "Fosfor", "en": "Phosphorus"}, "description": {"en": "Reactive and can be toxic. Don’t lick.", "tr": "Reaktif ve toksik olabilir. Yalamayın."}},
-            "16": {"symbol": "S", "name": {"tr": "Kükürt", "en": "Sulfur"}, "description": {"en": "Smelly but safe in small amounts.", "tr": "Kötü kokulu ama az miktarda güvenli."}},
-            "17": {"symbol": "Cl", "name": {"tr": "Klor", "en": "Chlorine"}, "description": {"en": "Used in pools. Toxic in high concentrations. Don’t lick.", "tr": "Havuzlarda kullanılır. Yüksek konsantrasyonda toksik. Yalamayın."}},
-            "18": {"symbol": "Ar", "name": {"tr": "Argon", "en": "Argon"}, "description": {"en": "Inert gas. Safe.", "tr": "Inert gaz. Güvenli."}},
-            "19": {"symbol": "K", "name": {"tr": "Potasyum", "en": "Potassium"}, "description": {"en": "Essential but reactive. Don’t lick.", "tr": "Gerekli ama reaktif. Yalamayın."}},
-            "20": {"symbol": "Ca", "name": {"tr": "Kalsiyum", "en": "Calcium"}, "description": {"en": "Good for bones. Safe.", "tr": "Kemikler için iyi. Güvenli."}},
-            "21": {"symbol": "Sc", "name": {"tr": "Skandiyum", "en": "Scandium"}, "description": {"en": "Used in alloys. Safe.", "tr": "Alaşımlarda kullanılır. Güvenli."}},
-            "22": {"symbol": "Ti", "name": {"tr": "Titanyum", "en": "Titanium"}, "description": {"en": "Strong metal. Safe.", "tr": "Güçlü metal. Güvenli."}},
-            "23": {"symbol": "V", "name": {"tr": "Vanadyum", "en": "Vanadium"}, "description": {"en": "Used in steel. Safe.", "tr": "Çelikte kullanılır. Güvenli."}},
-            "24": {"symbol": "Cr", "name": {"tr": "Krom", "en": "Chromium"}, "description": {"en": "Shiny metal. Safe.", "tr": "Parlak metal. Güvenli."}},
-            "25": {"symbol": "Mn", "name": {"tr": "Manganez", "en": "Manganese"}, "description": {"en": "Used in steel. Safe.", "tr": "Çelikte kullanılır. Güvenli."}},
-            "26": {"symbol": "Fe", "name": {"tr": "Demir", "en": "Iron"}, "description": {"en": "Essential metal. Safe.", "tr": "Gerekli metal. Güvenli."}},
-            "27": {"symbol": "Co", "name": {"tr": "Kobalt", "en": "Cobalt"}, "description": {"en": "Used in batteries. Safe.", "tr": "Pillerde kullanılır. Güvenli."}},
-            "28": {"symbol": "Ni", "name": {"tr": "Nikel", "en": "Nickel"}, "description": {"en": "Common in coins. Safe.", "tr": "Paralarda yaygındır. Güvenli."}},
-            "29": {"symbol": "Cu", "name": {"tr": "Bakır", "en": "Copper"}, "description": {"en": "Used in wiring. Safe.", "tr": "Kablolarda kullanılır. Güvenli."}},
-            "30": {"symbol": "Zn", "name": {"tr": "Çinko", "en": "Zinc"}, "description": {"en": "Used in galvanization. Safe.", "tr": "Galvanizasyonda kullanılır. Güvenli."}},
-            "31": {"symbol": "Ga", "name": {"tr": "Galyum", "en": "Gallium"}, "description": {"en": "Melts in hand. Safe.", "tr": "Elde erir. Güvenli."}},
-            "32": {"symbol": "Ge", "name": {"tr": "Germenyum", "en": "Germanium"}, "description": {"en": "Used in electronics. Safe.", "tr": "Elektronikte kullanılır. Güvenli."}},
-            "33": {"symbol": "As", "name": {"tr": "Arsenik", "en": "Arsenic"}, "description": {"en": "Toxic. Do not lick.", "tr": "Toksik. Yalamayın."}},
-            "34": {"symbol": "Se", "name": {"tr": "Selenyum", "en": "Selenium"}, "description": {"en": "Essential in small amounts. Large amounts toxic.", "tr": "Az miktarda gereklidir. Fazlası toksik."}},
-            "35": {"symbol": "Br", "name": {"tr": "Brom", "en": "Bromine"}, "description": {"en": "Toxic and corrosive. Don’t lick.", "tr": "Toksik ve korozif. Yalamayın."}},
-            "36": {"symbol": "Kr", "name": {"tr": "Kripton", "en": "Krypton"}, "description": {"en": "Inert gas. Safe.", "tr": "Inert gaz. Güvenli."}},
-            "37": {"symbol": "Rb", "name": {"tr": "Rubidyum", "en": "Rubidium"}, "description": {"en": "Reactive. Don’t lick.", "tr": "Reaktif. Yalamayın."}},
-            "38": {"symbol": "Sr", "name": {"tr": "Stronsiyum", "en": "Strontium"}, "description": {"en": "Used in fireworks. Safe in small amounts.", "tr": "Havai fişeklerde kullanılır. Az miktarda güvenli."}},
-            "39": {"symbol": "Y", "name": {"tr": "İtriyum", "en": "Yttrium"}, "description": {"en": "Used in lasers. Safe.", "tr": "Lazerlerde kullanılır. Güvenli."}},
-            "40": {"symbol": "Zr", "name": {"tr": "Zirkonyum", "en": "Zirconium"}, "description": {"en": "Used in nuclear reactors. Safe.", "tr": "Nükleer reaktörlerde kullanılır. Güvenli."}},
-            "41": {"symbol": "Nb", "name": {"tr": "Niobyum", "en": "Niobium"}, "description": {"en": "Used in alloys. Safe.", "tr": "Alaşımlarda kullanılır. Güvenli."}},
-            "42": {"symbol": "Mo", "name": {"tr": "Molibden", "en": "Molybdenum"}, "description": {"en": "Essential trace element. Safe.", "tr": "Gerekli iz element. Güvenli."}},
-            "43": {"symbol": "Tc", "name": {"tr": "Teknesyum", "en": "Technetium"}, "description": {"en": "Radioactive. Don’t lick.", "tr": "Radyoaktif. Yalamayın."}},
-            "44": {"symbol": "Ru", "name": {"tr": "Rutenyum", "en": "Ruthenium"}, "description": {"en": "Used in electronics. Safe.", "tr": "Elektronikte kullanılır. Güvenli."}},
-            "45": {"symbol": "Rh", "name": {"tr": "Rodyum", "en": "Rhodium"}, "description": {"en": "Used in catalytic converters. Safe.", "tr": "Katalitik konvertörlerde kullanılır. Güvenli."}},
-            "46": {"symbol": "Pd", "name": {"tr": "Paladyum", "en": "Palladium"}, "description": {"en": "Used in jewelry. Safe.", "tr": "Mücevherlerde kullanılır. Güvenli."}},
-            "47": {"symbol": "Ag", "name": {"tr": "Gümüş", "en": "Silver"}, "description": {"en": "Common metal. Safe.", "tr": "Yaygın metal. Güvenli."}},
-            "48": {"symbol": "Cd", "name": {"tr": "Kadmiyum", "en": "Cadmium"}, "description": {"en": "Toxic. Don’t lick.", "tr": "Toksik. Yalamayın."}},
-            "49": {"symbol": "In", "name": {"tr": "İndiyum", "en": "Indium"}, "description": {"en": "Used in electronics. Safe.", "tr": "Elektronikte kullanılır. Güvenli."}},
-            "50": {"symbol": "Sn", "name": {"tr": "Kalay", "en": "Tin"}, "description": {"en": "Used in cans. Safe.", "tr": "Konservelerde kullanılır. Güvenli."}},
-            "51": {"symbol": "Sb", "name": {"tr": "Antimon", "en": "Antimony"}, "description": {"en": "Toxic. Don’t lick.", "tr": "Toksik. Yalamayın."}},
-            "52": {"symbol": "Te", "name": {"tr": "Tellür", "en": "Tellurium"}, "description": {"en": "Can cause bad breath. Avoid.", "tr": "Kötü nefese neden olabilir. Kaçının."}},
-            "53": {"symbol": "I", "name": {"tr": "İyot", "en": "Iodine"}, "description": {"en": "Used in disinfectants. Toxic.", "tr": "Dezenfektanlarda kullanılır. Toksik."}},
-            "54": {"symbol": "Xe", "name": {"tr": "Ksenon", "en": "Xenon"}, "description": {"en": "Inert gas. Safe.", "tr": "Inert gaz. Güvenli."}},
-            "55": {"symbol": "Cs", "name": {"tr": "Sezyum", "en": "Cesium"}, "description": {"en": "Highly reactive. Don’t lick.", "tr": "Çok reaktif. Yalamayın."}},
-            "56": {"symbol": "Ba", "name": {"tr": "Baryum", "en": "Barium"}, "description": {"en": "Used in X-rays. Toxic.", "tr": "Röntgenlerde kullanılır. Toksik."}},
-            "57": {"symbol": "La", "name": {"tr": "Lantan", "en": "Lanthanum"}, "description": {"en": "Used in optics. Safe.", "tr": "Optikte kullanılır. Güvenli."}},
-            "58": {"symbol": "Ce", "name": {"tr": "Seryum", "en": "Cerium"}, "description": {"en": "Used in polishing. Safe.", "tr": "Parlatmada kullanılır. Güvenli."}},
-            "59": {"symbol": "Pr", "name": {"tr": "Praseodim", "en": "Praseodymium"}, "description": {"en": "Used in magnets. Safe.", "tr": "Mıknatıslarda kullanılır. Güvenli."}},
-            "60": {"symbol": "Nd", "name": {"tr": "Neodim", "en": "Neodymium"}, "description": {"en": "Used in magnets. Safe.", "tr": "Mıknatıslarda kullanılır. Güvenli."}},
-            "61": {"symbol": "Pm", "name": {"tr": "Prometyum", "en": "Promethium"}, "description": {"en": "Radioactive. Don’t lick.", "tr": "Radyoaktif. Yalamayın."}},
-            "62": {"symbol": "Sm", "name": {"tr": "Samaryum", "en": "Samarium"}, "description": {"en": "Used in magnets. Safe.", "tr": "Mıknatıslarda kullanılır. Güvenli."}},
-            "63": {"symbol": "Eu", "name": {"tr": "Europiyum", "en": "Europium"}, "description": {"en": "Used in TVs. Safe.", "tr": "Televizyonlarda kullanılır. Güvenli."}},
-            "64": {"symbol": "Gd", "name": {"tr": "Gadolinyum", "en": "Gadolinium"}, "description": {"en": "Used in MRI. Safe.", "tr": "MR'da kullanılır. Güvenli."}},
-            "65": {"symbol": "Tb", "name": {"tr": "Terbiyum", "en": "Terbium"}, "description": {"en": "Used in lighting. Safe.", "tr": "Aydınlatmada kullanılır. Güvenli."}},
-            "66": {"symbol": "Dy", "name": {"tr": "Disprosiyum", "en": "Dysprosium"}, "description": {"en": "Used in magnets. Safe.", "tr": "Mıknatıslarda kullanılır. Güvenli."}},
-            "67": {"symbol": "Ho", "name": {"tr": "Holmiyum", "en": "Holmium"}, "description": {"en": "Used in lasers. Safe.", "tr": "Lazerlerde kullanılır. Güvenli."}},
-            "68": {"symbol": "Er", "name": {"tr": "Erbiyum", "en": "Erbium"}, "description": {"en": "Used in fiber optics. Safe.", "tr": "Fiber optikte kullanılır. Güvenli."}},
-            "69": {"symbol": "Tm", "name": {"tr": "Tulyum", "en": "Thulium"}, "description": {"en": "Used in lasers. Safe.", "tr": "Lazerlerde kullanılır. Güvenli."}},
-            "70": {"symbol": "Yb", "name": {"tr": "İterbiyum", "en": "Ytterbium"}, "description": {"en": "Used in lasers. Safe.", "tr": "Lazerlerde kullanılır. Güvenli."}},
-            "71": {"symbol": "Lu", "name": {"tr": "Lutesyum", "en": "Lutetium"}, "description": {"en": "Used in PET scans. Safe.", "tr": "PET taramalarında kullanılır. Güvenli."}},
-            "72": {"symbol": "Hf", "name": {"tr": "Hafniyum", "en": "Hafnium"}, "description": {"en": "Used in nuclear reactors. Safe.", "tr": "Nükleer reaktörlerde kullanılır. Güvenli."}},
-            "73": {"symbol": "Ta", "name": {"tr": "Tantal", "en": "Tantalum"}, "description": {"en": "Used in electronics. Safe.", "tr": "Elektronikte kullanılır. Güvenli."}},
-            "74": {"symbol": "W", "name": {"tr": "Tungsten", "en": "Tungsten"}, "description": {"en": "Used in light bulbs. Safe.", "tr": "Ampullerde kullanılır. Güvenli."}},
-            "75": {"symbol": "Re", "name": {"tr": "Renyum", "en": "Rhenium"}, "description": {"en": "Used in jet engines. Safe.", "tr": "Jet motorlarında kullanılır. Güvenli."}},
-            "76": {"symbol": "Os", "name": {"tr": "Osmiyum", "en": "Osmium"}, "description": {"en": "Densest metal. Safe.", "tr": "En yoğun metal. Güvenli."}},
-            "77": {"symbol": "Ir", "name": {"tr": "İridyum", "en": "Iridium"}, "description": {"en": "Used in spark plugs. Safe.", "tr": "Bujielerde kullanılır. Güvenli."}},
-            "78": {"symbol": "Pt", "name": {"tr": "Platin", "en": "Platinum"}, "description": {"en": "Used in jewelry. Safe.", "tr": "Mücevherlerde kullanılır. Güvenli."}},
-            "79": {"symbol": "Au", "name": {"tr": "Altın", "en": "Gold"}, "description": {"en": "Precious metal. Safe.", "tr": "Değerli metal. Güvenli."}},
-            "80": {"symbol": "Hg", "name": {"tr": "Civa", "en": "Mercury"}, "description": {"en": "Toxic. Do not lick.", "tr": "Toksik. Yalamayın."}},
-            "81": {"symbol": "Tl", "name": {"tr": "Talyum", "en": "Thallium"}, "description": {"en": "Highly toxic. Don’t lick.", "tr": "Çok toksik. Yalamayın."}},
-            "82": {"symbol": "Pb", "name": {"tr": "Kurşun", "en": "Lead"}, "description": {"en": "Toxic. Don’t lick.", "tr": "Toksik. Yalamayın."}},
-            "83": {"symbol": "Bi", "name": {"tr": "Bizmut", "en": "Bismuth"}, "description": {"en": "Used in medicine. Safe in small amounts.", "tr": "Tıpta kullanılır. Az miktarda güvenli."}},
-            "84": {"symbol": "Po", "name": {"tr": "Polonyum", "en": "Polonium"}, "description": {"en": "Highly radioactive. Don’t lick.", "tr": "Çok radyoaktif. Yalamayın."}},
-            "85": {"symbol": "At", "name": {"tr": "Astat", "en": "Astatine"}, "description": {"en": "Radioactive. Don’t lick.", "tr": "Radyoaktif. Yalamayın."}},
-            "86": {"symbol": "Rn", "name": {"tr": "Radon", "en": "Radon"}, "description": {"en": "Radioactive gas. Don’t lick.", "tr": "Radyoaktif gaz. Yalamayın."}},
-            "87": {"symbol": "Fr", "name": {"tr": "Fransiyum", "en": "Francium"}, "description": {"en": "Highly radioactive. Don’t lick.", "tr": "Çok radyoaktif. Yalamayın."}},
-            "88": {"symbol": "Ra", "name": {"tr": "Radyum", "en": "Radium"}, "description": {"en": "Radioactive. Don’t lick.", "tr": "Radyoaktif. Yalamayın."}},
-            "89": {"symbol": "Ac", "name": {"tr": "Aktinyum", "en": "Actinium"}, "description": {"en": "Radioactive. Don’t lick.", "tr": "Radyoaktif. Yalamayın."}},
-            "90": {"symbol": "Th", "name": {"tr": "Toryum", "en": "Thorium"}, "description": {"en": "Radioactive. Don’t lick.", "tr": "Radyoaktif. Yalamayın."}},
-            "91": {"symbol": "Pa", "name": {"tr": "Protaktinyum", "en": "Protactinium"}, "description": {"en": "Radioactive. Don’t lick.", "tr": "Radyoaktif. Yalamayın."}},
-            "92": {"symbol": "U", "name": {"tr": "Uranyum", "en": "Uranium"}, "description": {"en": "Radioactive. Don’t lick.", "tr": "Radyoaktif. Yalamayın."}},
-            "93": {"symbol": "Np", "name": {"tr": "Neptünyum", "en": "Neptunium"}, "description": {"en": "Radioactive. Don’t lick.", "tr": "Radyoaktif. Yalamayın."}},
-            "94": {"symbol": "Pu", "name": {"tr": "Plütonyum", "en": "Plutonium"}, "description": {"en": "Highly radioactive. Don’t lick.", "tr": "Çok radyoaktif. Yalamayın."}},
-            "95": {"symbol": "Am", "name": {"tr": "Amerikyum", "en": "Americium"}, "description": {"en": "Used in smoke detectors. Radioactive.", "tr": "Duman dedektörlerinde kullanılır. Radyoaktif."}},
-            "96": {"symbol": "Cm", "name": {"tr": "Küriyum", "en": "Curium"}, "description": {"en": "Radioactive. Don’t lick.", "tr": "Radyoaktif. Yalamayın."}},
-            "97": {"symbol": "Bk", "name": {"tr": "Berkelyum", "en": "Berkelium"}, "description": {"en": "Radioactive. Don’t lick.", "tr": "Radyoaktif. Yalamayın."}},
-            "98": {"symbol": "Cf", "name": {"tr": "Kaliforniyum", "en": "Californium"}, "description": {"en": "Radioactive. Don’t lick.", "tr": "Radyoaktif. Yalamayın."}},
-            "99": {"symbol": "Es", "name": {"tr": "Einsteinyum", "en": "Einsteinium"}, "description": {"en": "Radioactive. Don’t lick.", "tr": "Radyoaktif. Yalamayın."}},
-            "100": {"symbol": "Fm", "name": {"tr": "Fermiyum", "en": "Fermium"}, "description": {"en": "Radioactive. Don’t lick.", "tr": "Radyoaktif. Yalamayın."}},
-            "101": {"symbol": "Md", "name": {"tr": "Mendelevyum", "en": "Mendelevium"}, "description": {"en": "Radioactive. Don’t lick.", "tr": "Radyoaktif. Yalamayın."}},
-            "102": {"symbol": "No", "name": {"tr": "Nobelyum", "en": "Nobelium"}, "description": {"en": "Radioactive. Don’t lick.", "tr": "Radyoaktif. Yalamayın."}},
-            "103": {"symbol": "Lr", "name": {"tr": "Lavrensiyum", "en": "Lawrencium"}, "description": {"en": "Radioactive. Don’t lick.", "tr": "Radyoaktif. Yalamayın."}},
-            "104": {"symbol": "Rf", "name": {"tr": "Rutherfordyum", "en": "Rutherfordium"}, "description": {"en": "Synthetic and radioactive. Don’t lick.", "tr": "Sentetik ve radyoaktif. Yalamayın."}},
-            "105": {"symbol": "Db", "name": {"tr": "Dubniyum", "en": "Dubnium"}, "description": {"en": "Synthetic and radioactive. Don’t lick.", "tr": "Sentetik ve radyoaktif. Yalamayın."}},
-            "106": {"symbol": "Sg", "name": {"tr": "Seaborgiyum", "en": "Seaborgium"}, "description": {"en": "Synthetic and radioactive. Don’t lick.", "tr": "Sentetik ve radyoaktif. Yalamayın."}},
-            "107": {"symbol": "Bh", "name": {"tr": "Bohriyum", "en": "Bohrium"}, "description": {"en": "Synthetic and radioactive. Don’t lick.", "tr": "Sentetik ve radyoaktif. Yalamayın."}},
-            "108": {"symbol": "Hs", "name": {"tr": "Hassiyum", "en": "Hassium"}, "description": {"en": "Synthetic and radioactive. Don’t lick.", "tr": "Sentetik ve radyoaktif. Yalamayın."}},
-            "109": {"symbol": "Mt", "name": {"tr": "Meitneriyum", "en": "Meitnerium"}, "description": {"en": "Synthetic and radioactive. Don’t lick.", "tr": "Sentetik ve radyoaktif. Yalamayın."}},
-            "110": {"symbol": "Ds", "name": {"tr": "Darmstadtiyum", "en": "Darmstadtium"}, "description": {"en": "Synthetic and radioactive. Don’t lick.", "tr": "Sentetik ve radyoaktif. Yalamayın."}},
-            "111": {"symbol": "Rg", "name": {"tr": "Röntgenyum", "en": "Roentgenium"}, "description": {"en": "Synthetic and radioactive. Don’t lick.", "tr": "Sentetik ve radyoaktif. Yalamayın."}},
-            "112": {"symbol": "Cn", "name": {"tr": "Kopernikyum", "en": "Copernicium"}, "description": {"en": "Synthetic and radioactive. Don’t lick.", "tr": "Sentetik ve radyoaktif. Yalamayın."}},
-            "113": {"symbol": "Nh", "name": {"tr": "Nihoniyum", "en": "Nihonium"}, "description": {"en": "Synthetic and radioactive. Don’t lick.", "tr": "Sentetik ve radyoaktif. Yalamayın."}},
-            "114": {"symbol": "Fl", "name": {"tr": "Flerovyum", "en": "Flerovium"}, "description": {"en": "Synthetic and radioactive. Don’t lick.", "tr": "Sentetik ve radyoaktif. Yalamayın."}},
-            "115": {"symbol": "Mc", "name": {"tr": "Moskavyum", "en": "Moscovium"}, "description": {"en": "Synthetic and radioactive. Don’t lick.", "tr": "Sentetik ve radyoaktif. Yalamayın."}},
-            "116": {"symbol": "Lv", "name": {"tr": "Livermoryum", "en": "Livermorium"}, "description": {"en": "Synthetic and radioactive. Don’t lick.", "tr": "Sentetik ve radyoaktif. Yalamayın."}},
-            "117": {"symbol": "Ts", "name": {"tr": "Tenesin", "en": "Tennessine"}, "description": {"en": "Synthetic and radioactive. Don’t lick.", "tr": "Sentetik ve radyoaktif. Yalamayın."}},
-            "118": {"symbol": "Og", "name": {"tr": "Oganesson", "en": "Oganesson"}, "description": {"en": "Synthetic and radioactive. Don’t lick.", "tr": "Sentetik ve radyoaktif. Yalamayın."}}
+            "1": {"symbol": "H", "name": {"tr": "Hidrojen", "en": "Hydrogen"}, "description": {"en": "Hydrogen is a very common gas. Since it’s a gas, you can’t really lick it, but if you could, it wouldn’t harm you.", "tr": "Hidrojen çok yaygın bir gazdır. Gaz olduğu için yalanamaz, ama yalansaydı zarar vermezdi."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Hydrogen_discharge_tube.jpg/220px-Hydrogen_discharge_tube.jpg"},
+            "2": {"symbol": "He", "name": {"tr": "Helyum", "en": "Helium"}, "description": {"en": "Used in balloons to make your voice squeaky. You’ve probably inhaled it, so licking it is fine.", "tr": "Balonlarda sesinizi incelten gaz. Muhtemelen soludunuz, yalamak sorun olmaz."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Helium_discharge_tube.jpg/220px-Helium_discharge_tube.jpg"},
+            "3": {"symbol": "Li", "name": {"tr": "Lityum", "en": "Lithium"}, "description": {"en": "Found in batteries. Licking it can cause burns and isn’t recommended.", "tr": "Pillerde bulunur. Yalamak yanıklara neden olabilir, önerilmez."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Lithium_metal.jpg/220px-Lithium_metal.jpg"},
+            "4": {"symbol": "Be", "name": {"tr": "Berilyum", "en": "Beryllium"}, "description": {"en": "Used in alloys. Contact can cause irritation or berylliosis. Don’t lick.", "tr": "Alaşımlarda kullanılır. Temas tahrişe veya berilyoza neden olabilir. Yalamayın."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Beryllium_%28Be%29.jpg/220px-Beryllium_%28Be%29.jpg"},
+            "5": {"symbol": "B", "name": {"tr": "Bor", "en": "Boron"}, "description": {"en": "A small lick won’t hurt, though large amounts affect kidneys.", "tr": "Küçük bir yalama zarar vermez, ama fazla miktarda böbreklere etki eder."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Boron_sample.jpg/220px-Boron_sample.jpg"},
+            "6": {"symbol": "C", "name": {"tr": "Karbon", "en": "Carbon"}, "description": {"en": "Essential for life. You’ve probably ingested some form of it.", "tr": "Yaşam için gereklidir. Muhtemelen bir formunu yediniz."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Graphite-233436.jpg/220px-Graphite-233436.jpg"},
+            "7": {"symbol": "N", "name": {"tr": "Azot", "en": "Nitrogen"}, "description": {"en": "Makes up most of the air. Safe to lick.", "tr": "Havanın çoğunu oluşturur. Yalamak güvenlidir."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Nitrogen_discharge_tube.jpg/220px-Nitrogen_discharge_tube.jpg"},
+            "8": {"symbol": "O", "name": {"tr": "Oksijen", "en": "Oxygen"}, "description": {"en": "You breathe it. Safe.", "tr": "Soluduğunuz gaz. Güvenli."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Oxygen_discharge_tube.jpg/220px-Oxygen_discharge_tube.jpg"},
+            "9": {"symbol": "F", "name": {"tr": "Flor", "en": "Fluorine"}, "description": {"en": "Highly reactive and toxic. Do not lick.", "tr": "Çok reaktif ve toksik. Yalamayın."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Fluorine_gas.jpg/220px-Fluorine_gas.jpg"},
+            "10": {"symbol": "Ne", "name": {"tr": "Neon", "en": "Neon"}, "description": {"en": "Inert gas used in signs. Safe.", "tr": "Tabelalarda kullanılan inert gaz. Güvenli."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Neon_discharge_tube.jpg/220px-Neon_discharge_tube.jpg"},
+            "11": {"symbol": "Na", "name": {"tr": "Sodyum", "en": "Sodium"}, "description": {"en": "Reacts with water. Can cause burns. Don’t lick.", "tr": "Su ile reaksiyona girer. Yanıklara neden olabilir. Yalamayın."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Sodium_metal.jpg/220px-Sodium_metal.jpg"},
+            "12": {"symbol": "Mg", "name": {"tr": "Magnezyum", "en": "Magnesium"}, "description": {"en": "Used in medicine and alloys. Safe to lick.", "tr": "Tıpta ve alaşımlarda kullanılır. Yalamak güvenlidir."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Magnesium_crystals.jpg/220px-Magnesium_crystals.jpg"},
+            "13": {"symbol": "Al", "name": {"tr": "Alüminyum", "en": "Aluminum"}, "description": {"en": "Common metal. Safe to lick.", "tr": "Yaygın metal. Yalamak güvenlidir."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Aluminium_metal.jpg/220px-Aluminium_metal.jpg"},
+            "14": {"symbol": "Si", "name": {"tr": "Silikon", "en": "Silicon"}, "description": {"en": "Used in electronics. Safe.", "tr": "Elektronikte kullanılır. Güvenli."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Silicon_crystal.jpg/220px-Silicon_crystal.jpg"},
+            "15": {"symbol": "P", "name": {"tr": "Fosfor", "en": "Phosphorus"}, "description": {"en": "Reactive and can be toxic. Don’t lick.", "tr": "Reaktif ve toksik olabilir. Yalamayın."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Phosphorus_red.jpg/220px-Phosphorus_red.jpg"},
+            "16": {"symbol": "S", "name": {"tr": "Kükürt", "en": "Sulfur"}, "description": {"en": "Smelly but safe in small amounts.", "tr": "Kötü kokulu ama az miktarda güvenli."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Sulfur_sample.jpg/220px-Sulfur_sample.jpg"},
+            "17": {"symbol": "Cl", "name": {"tr": "Klor", "en": "Chlorine"}, "description": {"en": "Used in pools. Toxic in high concentrations. Don’t lick.", "tr": "Havuzlarda kullanılır. Yüksek konsantrasyonda toksik. Yalamayın."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Chlorine_gas.jpg/220px-Chlorine_gas.jpg"},
+            "18": {"symbol": "Ar", "name": {"tr": "Argon", "en": "Argon"}, "description": {"en": "Inert gas. Safe.", "tr": "Inert gaz. Güvenli."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Argon_discharge_tube.jpg/220px-Argon_discharge_tube.jpg"},
+            "19": {"symbol": "K", "name": {"tr": "Potasyum", "en": "Potassium"}, "description": {"en": "Essential but reactive. Don’t lick.", "tr": "Gerekli ama reaktif. Yalamayın."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Potassium_metal.jpg/220px-Potassium_metal.jpg"},
+            "20": {"symbol": "Ca", "name": {"tr": "Kalsiyum", "en": "Calcium"}, "description": {"en": "Good for bones. Safe.", "tr": "Kemikler için iyi. Güvenli."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Calcium_metal.jpg/220px-Calcium_metal.jpg"},
+            "21": {"symbol": "Sc", "name": {"tr": "Skandiyum", "en": "Scandium"}, "description": {"en": "Used in alloys. Safe.", "tr": "Alaşımlarda kullanılır. Güvenli."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Scandium_metal.jpg/220px-Scandium_metal.jpg"},
+            "22": {"symbol": "Ti", "name": {"tr": "Titanyum", "en": "Titanium"}, "description": {"en": "Strong metal. Safe.", "tr": "Güçlü metal. Güvenli."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Titanium_metal.jpg/220px-Titanium_metal.jpg"},
+            "23": {"symbol": "V", "name": {"tr": "Vanadyum", "en": "Vanadium"}, "description": {"en": "Used in steel. Safe.", "tr": "Çelikte kullanılır. Güvenli."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Vanadium_metal.jpg/220px-Vanadium_metal.jpg"},
+            "24": {"symbol": "Cr", "name": {"tr": "Krom", "en": "Chromium"}, "description": {"en": "Shiny metal. Safe.", "tr": "Parlak metal. Güvenli."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Chromium_metal.jpg/220px-Chromium_metal.jpg"},
+            "25": {"symbol": "Mn", "name": {"tr": "Manganez", "en": "Manganese"}, "description": {"en": "Used in steel. Safe.", "tr": "Çelikte kullanılır. Güvenli."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Manganese_metal.jpg/220px-Manganese_metal.jpg"},
+            "26": {"symbol": "Fe", "name": {"tr": "Demir", "en": "Iron"}, "description": {"en": "Essential metal. Safe.", "tr": "Gerekli metal. Güvenli."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Iron_metal.jpg/220px-Iron_metal.jpg"},
+            "27": {"symbol": "Co", "name": {"tr": "Kobalt", "en": "Cobalt"}, "description": {"en": "Used in batteries. Safe.", "tr": "Pillerde kullanılır. Güvenli."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Cobalt_metal.jpg/220px-Cobalt_metal.jpg"},
+            "28": {"symbol": "Ni", "name": {"tr": "Nikel", "en": "Nickel"}, "description": {"en": "Common in coins. Safe.", "tr": "Paralarda yaygındır. Güvenli."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Nickel_metal.jpg/220px-Nickel_metal.jpg"},
+            "29": {"symbol": "Cu", "name": {"tr": "Bakır", "en": "Copper"}, "description": {"en": "Used in wiring. Safe.", "tr": "Kablolarda kullanılır. Güvenli."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Copper_metal.jpg/220px-Copper_metal.jpg"},
+            "30": {"symbol": "Zn", "name": {"tr": "Çinko", "en": "Zinc"}, "description": {"en": "Used in galvanization. Safe.", "tr": "Galvanizasyonda kullanılır. Güvenli."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Zinc_metal.jpg/220px-Zinc_metal.jpg"},
+            "31": {"symbol": "Ga", "name": {"tr": "Galyum", "en": "Gallium"}, "description": {"en": "Melts in hand. Safe.", "tr": "Elde erir. Güvenli."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Gallium_metal.jpg/220px-Gallium_metal.jpg"},
+            "32": {"symbol": "Ge", "name": {"tr": "Germenyum", "en": "Germanium"}, "description": {"en": "Used in electronics. Safe.", "tr": "Elektronikte kullanılır. Güvenli."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Germanium_metal.jpg/220px-Germanium_metal.jpg"},
+            "33": {"symbol": "As", "name": {"tr": "Arsenik", "en": "Arsenic"}, "description": {"en": "Toxic. Do not lick.", "tr": "Toksik. Yalamayın."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Arsenic_metal.jpg/220px-Arsenic_metal.jpg"},
+            "34": {"symbol": "Se", "name": {"tr": "Selenyum", "en": "Selenium"}, "description": {"en": "Essential in small amounts. Large amounts toxic.", "tr": "Az miktarda gereklidir. Fazlası toksik."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Selenium_metal.jpg/220px-Selenium_metal.jpg"},
+            "35": {"symbol": "Br", "name": {"tr": "Brom", "en": "Bromine"}, "description": {"en": "Toxic and corrosive. Don’t lick.", "tr": "Toksik ve korozif. Yalamayın."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Bromine_liquid.jpg/220px-Bromine_liquid.jpg"},
+            "36": {"symbol": "Kr", "name": {"tr": "Kripton", "en": "Krypton"}, "description": {"en": "Inert gas. Safe.", "tr": "Inert gaz. Güvenli."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Krypton_discharge_tube.jpg/220px-Krypton_discharge_tube.jpg"},
+            "37": {"symbol": "Rb", "name": {"tr": "Rubidyum", "en": "Rubidium"}, "description": {"en": "Reactive. Don’t lick.", "tr": "Reaktif. Yalamayın."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Rubidium_metal.jpg/220px-Rubidium_metal.jpg"},
+            "38": {"symbol": "Sr", "name": {"tr": "Stronsiyum", "en": "Strontium"}, "description": {"en": "Used in fireworks. Safe in small amounts.", "tr": "Havai fişeklerde kullanılır. Az miktarda güvenli."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Strontium_metal.jpg/220px-Strontium_metal.jpg"},
+            "39": {"symbol": "Y", "name": {"tr": "İtriyum", "en": "Yttrium"}, "description": {"en": "Used in lasers. Safe.", "tr": "Lazerlerde kullanılır. Güvenli."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Yttrium_metal.jpg/220px-Yttrium_metal.jpg"},
+            "40": {"symbol": "Zr", "name": {"tr": "Zirkonyum", "en": "Zirconium"}, "description": {"en": "Used in nuclear reactors. Safe.", "tr": "Nükleer reaktörlerde kullanılır. Güvenli."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Zirconium_metal.jpg/220px-Zirconium_metal.jpg"},
+            "41": {"symbol": "Nb", "name": {"tr": "Niobyum", "en": "Niobium"}, "description": {"en": "Used in alloys. Safe.", "tr": "Alaşımlarda kullanılır. Güvenli."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Niobium_metal.jpg/220px-Niobium_metal.jpg"},
+            "42": {"symbol": "Mo", "name": {"tr": "Molibden", "en": "Molybdenum"}, "description": {"en": "Essential trace element. Safe.", "tr": "Gerekli iz element. Güvenli."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Molybdenum_metal.jpg/220px-Molybdenum_metal.jpg"},
+            "43": {"symbol": "Tc", "name": {"tr": "Teknesyum", "en": "Technetium"}, "description": {"en": "Radioactive. Don’t lick.", "tr": "Radyoaktif. Yalamayın."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Technetium_symbol.png/220px-Technetium_symbol.png"},
+            "44": {"symbol": "Ru", "name": {"tr": "Rutenyum", "en": "Ruthenium"}, "description": {"en": "Used in electronics. Safe.", "tr": "Elektronikte kullanılır. Güvenli."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Ruthenium_metal.jpg/220px-Ruthenium_metal.jpg"},
+            "45": {"symbol": "Rh", "name": {"tr": "Rodyum", "en": "Rhodium"}, "description": {"en": "Used in catalytic converters. Safe.", "tr": "Katalitik konvertörlerde kullanılır. Güvenli."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Rhodium_metal.jpg/220px-Rhodium_metal.jpg"},
+            "46": {"symbol": "Pd", "name": {"tr": "Paladyum", "en": "Palladium"}, "description": {"en": "Used in jewelry. Safe.", "tr": "Mücevherlerde kullanılır. Güvenli."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Palladium_metal.jpg/220px-Palladium_metal.jpg"},
+            "47": {"symbol": "Ag", "name": {"tr": "Gümüş", "en": "Silver"}, "description": {"en": "Common metal. Safe.", "tr": "Yaygın metal. Güvenli."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Silver_metal.jpg/220px-Silver_metal.jpg"},
+            "48": {"symbol": "Cd", "name": {"tr": "Kadmiyum", "en": "Cadmium"}, "description": {"en": "Toxic. Don’t lick.", "tr": "Toksik. Yalamayın."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Cadmium_metal.jpg/220px-Cadmium_metal.jpg"},
+            "49": {"symbol": "In", "name": {"tr": "İndiyum", "en": "Indium"}, "description": {"en": "Used in electronics. Safe.", "tr": "Elektronikte kullanılır. Güvenli."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Indium_metal.jpg/220px-Indium_metal.jpg"},
+            "50": {"symbol": "Sn", "name": {"tr": "Kalay", "en": "Tin"}, "description": {"en": "Used in cans. Safe.", "tr": "Konservelerde kullanılır. Güvenli."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Tin_metal.jpg/220px-Tin_metal.jpg"},
+            "51": {"symbol": "Sb", "name": {"tr": "Antimon", "en": "Antimony"}, "description": {"en": "Toxic. Don’t lick.", "tr": "Toksik. Yalamayın."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Antimony_metal.jpg/220px-Antimony_metal.jpg"},
+            "52": {"symbol": "Te", "name": {"tr": "Tellür", "en": "Tellurium"}, "description": {"en": "Can cause bad breath. Avoid.", "tr": "Kötü nefese neden olabilir. Kaçının."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Tellurium_metal.jpg/220px-Tellurium_metal.jpg"},
+            "53": {"symbol": "I", "name": {"tr": "İyot", "en": "Iodine"}, "description": {"en": "Used in disinfectants. Toxic.", "tr": "Dezenfektanlarda kullanılır. Toksik."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Iodine_crystals.jpg/220px-Iodine_crystals.jpg"},
+            "54": {"symbol": "Xe", "name": {"tr": "Ksenon", "en": "Xenon"}, "description": {"en": "Inert gas. Safe.", "tr": "Inert gaz. Güvenli."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Xenon_discharge_tube.jpg/220px-Xenon_discharge_tube.jpg"},
+            "55": {"symbol": "Cs", "name": {"tr": "Sezyum", "en": "Cesium"}, "description": {"en": "Highly reactive. Don’t lick.", "tr": "Çok reaktif. Yalamayın."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Cesium_metal.jpg/220px-Cesium_metal.jpg"},
+            "56": {"symbol": "Ba", "name": {"tr": "Baryum", "en": "Barium"}, "description": {"en": "Used in X-rays. Toxic.", "tr": "Röntgenlerde kullanılır. Toksik."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Barium_metal.jpg/220px-Barium_metal.jpg"},
+            "57": {"symbol": "La", "name": {"tr": "Lantan", "en": "Lanthanum"}, "description": {"en": "Used in optics. Safe.", "tr": "Optikte kullanılır. Güvenli."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Lanthanum_metal.jpg/220px-Lanthanum_metal.jpg"},
+            "58": {"symbol": "Ce", "name": {"tr": "Seryum", "en": "Cerium"}, "description": {"en": "Used in polishing. Safe.", "tr": "Parlatmada kullanılır. Güvenli."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Cerium_metal.jpg/220px-Cerium_metal.jpg"},
+            "59": {"symbol": "Pr", "name": {"tr": "Praseodim", "en": "Praseodymium"}, "description": {"en": "Used in magnets. Safe.", "tr": "Mıknatıslarda kullanılır. Güvenli."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Praseodymium_metal.jpg/220px-Praseodymium_metal.jpg"},
+            "60": {"symbol": "Nd", "name": {"tr": "Neodim", "en": "Neodymium"}, "description": {"en": "Used in magnets. Safe.", "tr": "Mıknatıslarda kullanılır. Güvenli."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Neodymium_metal.jpg/220px-Neodymium_metal.jpg"},
+            "61": {"symbol": "Pm", "name": {"tr": "Prometyum", "en": "Promethium"}, "description": {"en": "Radioactive. Don’t lick.", "tr": "Radyoaktif. Yalamayın."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Promethium_symbol.png/220px-Promethium_symbol.png"},
+            "62": {"symbol": "Sm", "name": {"tr": "Samaryum", "en": "Samarium"}, "description": {"en": "Used in magnets. Safe.", "tr": "Mıknatıslarda kullanılır. Güvenli."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Samarium_metal.jpg/220px-Samarium_metal.jpg"},
+            "63": {"symbol": "Eu", "name": {"tr": "Europiyum", "en": "Europium"}, "description": {"en": "Used in TVs. Safe.", "tr": "Televizyonlarda kullanılır. Güvenli."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Europium_metal.jpg/220px-Europium_metal.jpg"},
+            "64": {"symbol": "Gd", "name": {"tr": "Gadolinyum", "en": "Gadolinium"}, "description": {"en": "Used in MRI. Safe.", "tr": "MR'da kullanılır. Güvenli."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Gadolinium_metal.jpg/220px-Gadolinium_metal.jpg"},
+            "65": {"symbol": "Tb", "name": {"tr": "Terbiyum", "en": "Terbium"}, "description": {"en": "Used in lighting. Safe.", "tr": "Aydınlatmada kullanılır. Güvenli."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Terbium_metal.jpg/220px-Terbium_metal.jpg"},
+            "66": {"symbol": "Dy", "name": {"tr": "Disprosiyum", "en": "Dysprosium"}, "description": {"en": "Used in magnets. Safe.", "tr": "Mıknatıslarda kullanılır. Güvenli."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Dysprosium_metal.jpg/220px-Dysprosium_metal.jpg"},
+            "67": {"symbol": "Ho", "name": {"tr": "Holmiyum", "en": "Holmium"}, "description": {"en": "Used in lasers. Safe.", "tr": "Lazerlerde kullanılır. Güvenli."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Holmium_metal.jpg/220px-Holmium_metal.jpg"},
+            "68": {"symbol": "Er", "name": {"tr": "Erbiyum", "en": "Erbium"}, "description": {"en": "Used in fiber optics. Safe.", "tr": "Fiber optikte kullanılır. Güvenli."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Erbium_metal.jpg/220px-Erbium_metal.jpg"},
+            "69": {"symbol": "Tm", "name": {"tr": "Tulyum", "en": "Thulium"}, "description": {"en": "Used in lasers. Safe.", "tr": "Lazerlerde kullanılır. Güvenli."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Thulium_metal.jpg/220px-Thulium_metal.jpg"},
+            "70": {"symbol": "Yb", "name": {"tr": "İterbiyum", "en": "Ytterbium"}, "description": {"en": "Used in lasers. Safe.", "tr": "Lazerlerde kullanılır. Güvenli."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Ytterbium_metal.jpg/220px-Ytterbium_metal.jpg"},
+            "71": {"symbol": "Lu", "name": {"tr": "Lutesyum", "en": "Lutetium"}, "description": {"en": "Used in PET scans. Safe.", "tr": "PET taramalarında kullanılır. Güvenli."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Lutetium_metal.jpg/220px-Lutetium_metal.jpg"},
+            "72": {"symbol": "Hf", "name": {"tr": "Hafniyum", "en": "Hafnium"}, "description": {"en": "Used in nuclear reactors. Safe.", "tr": "Nükleer reaktörlerde kullanılır. Güvenli."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Hafnium_metal.jpg/220px-Hafnium_metal.jpg"},
+            "73": {"symbol": "Ta", "name": {"tr": "Tantal", "en": "Tantalum"}, "description": {"en": "Used in electronics. Safe.", "tr": "Elektronikte kullanılır. Güvenli."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Tantalum_metal.jpg/220px-Tantalum_metal.jpg"},
+            "74": {"symbol": "W", "name": {"tr": "Tungsten", "en": "Tungsten"}, "description": {"en": "Used in light bulbs. Safe.", "tr": "Ampullerde kullanılır. Güvenli."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Tungsten_metal.jpg/220px-Tungsten_metal.jpg"},
+            "75": {"symbol": "Re", "name": {"tr": "Renyum", "en": "Rhenium"}, "description": {"en": "Used in jet engines. Safe.", "tr": "Jet motorlarında kullanılır. Güvenli."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Rhenium_metal.jpg/220px-Rhenium_metal.jpg"},
+            "76": {"symbol": "Os", "name": {"tr": "Osmiyum", "en": "Osmium"}, "description": {"en": "Densest metal. Safe.", "tr": "En yoğun metal. Güvenli."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Osmium_metal.jpg/220px-Osmium_metal.jpg"},
+            "77": {"symbol": "Ir", "name": {"tr": "İridyum", "en": "Iridium"}, "description": {"en": "Used in spark plugs. Safe.", "tr": "Bujielerde kullanılır. Güvenli."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Iridium_metal.jpg/220px-Iridium_metal.jpg"},
+            "78": {"symbol": "Pt", "name": {"tr": "Platin", "en": "Platinum"}, "description": {"en": "Used in jewelry. Safe.", "tr": "Mücevherlerde kullanılır. Güvenli."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Platinum_metal.jpg/220px-Platinum_metal.jpg"},
+            "79": {"symbol": "Au", "name": {"tr": "Altın", "en": "Gold"}, "description": {"en": "Precious metal. Safe.", "tr": "Değerli metal. Güvenli."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Gold_metal.jpg/220px-Gold_metal.jpg"},
+            "80": {"symbol": "Hg", "name": {"tr": "Civa", "en": "Mercury"}, "description": {"en": "Toxic. Do not lick.", "tr": "Toksik. Yalamayın."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Mercury_liquid.jpg/220px-Mercury_liquid.jpg"},
+            "81": {"symbol": "Tl", "name": {"tr": "Talyum", "en": "Thallium"}, "description": {"en": "Highly toxic. Don’t lick.", "tr": "Çok toksik. Yalamayın."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Thallium_metal.jpg/220px-Thallium_metal.jpg"},
+            "82": {"symbol": "Pb", "name": {"tr": "Kurşun", "en": "Lead"}, "description": {"en": "Toxic. Don’t lick.", "tr": "Toksik. Yalamayın."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Lead_metal.jpg/220px-Lead_metal.jpg"},
+            "83": {"symbol": "Bi", "name": {"tr": "Bizmut", "en": "Bismuth"}, "description": {"en": "Used in medicine. Safe in small amounts.", "tr": "Tıpta kullanılır. Az miktarda güvenli."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Bismuth_metal.jpg/220px-Bismuth_metal.jpg"},
+            "84": {"symbol": "Po", "name": {"tr": "Polonyum", "en": "Polonium"}, "description": {"en": "Highly radioactive. Don’t lick.", "tr": "Çok radyoaktif. Yalamayın."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Polonium_symbol.png/220px-Polonium_symbol.png"},
+            "85": {"symbol": "At", "name": {"tr": "Astat", "en": "Astatine"}, "description": {"en": "Radioactive. Don’t lick.", "tr": "Radyoaktif. Yalamayın."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Astatine_symbol.png/220px-Astatine_symbol.png"},
+            "86": {"symbol": "Rn", "name": {"tr": "Radon", "en": "Radon"}, "description": {"en": "Radioactive gas. Don’t lick.", "tr": "Radyoaktif gaz. Yalamayın."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Radon_symbol.png/220px-Radon_symbol.png"},
+            "87": {"symbol": "Fr", "name": {"tr": "Fransiyum", "en": "Francium"}, "description": {"en": "Highly radioactive. Don’t lick.", "tr": "Çok radyoaktif. Yalamayın."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Francium_symbol.png/220px-Francium_symbol.png"},
+            "88": {"symbol": "Ra", "name": {"tr": "Radyum", "en": "Radium"}, "description": {"en": "Radioactive. Don’t lick.", "tr": "Radyoaktif. Yalamayın."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Radium_symbol.png/220px-Radium_symbol.png"},
+            "89": {"symbol": "Ac", "name": {"tr": "Aktinyum", "en": "Actinium"}, "description": {"en": "Radioactive. Don’t lick.", "tr": "Radyoaktif. Yalamayın."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Actinium_symbol.png/220px-Actinium_symbol.png"},
+            "90": {"symbol": "Th", "name": {"tr": "Toryum", "en": "Thorium"}, "description": {"en": "Radioactive. Don’t lick.", "tr": "Radyoaktif. Yalamayın."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Thorium_metal.jpg/220px-Thorium_metal.jpg"},
+            "91": {"symbol": "Pa", "name": {"tr": "Protaktinyum", "en": "Protactinium"}, "description": {"en": "Radioactive. Don’t lick.", "tr": "Radyoaktif. Yalamayın."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Protactinium_symbol.png/220px-Protactinium_symbol.png"},
+            "92": {"symbol": "U", "name": {"tr": "Uranyum", "en": "Uranium"}, "description": {"en": "Radioactive. Don’t lick.", "tr": "Radyoaktif. Yalamayın."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Uranium_metal.jpg/220px-Uranium_metal.jpg"},
+            "93": {"symbol": "Np", "name": {"tr": "Neptünyum", "en": "Neptunium"}, "description": {"en": "Radioactive. Don’t lick.", "tr": "Radyoaktif. Yalamayın."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Neptunium_symbol.png/220px-Neptunium_symbol.png"},
+            "94": {"symbol": "Pu", "name": {"tr": "Plütonyum", "en": "Plutonium"}, "description": {"en": "Highly radioactive. Don’t lick.", "tr": "Çok radyoaktif. Yalamayın."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Plutonium_metal.jpg/220px-Plutonium_metal.jpg"},
+            "95": {"symbol": "Am", "name": {"tr": "Amerikyum", "en": "Americium"}, "description": {"en": "Used in smoke detectors. Radioactive.", "tr": "Duman dedektörlerinde kullanılır. Radyoaktif."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Americium_symbol.png/220px-Americium_symbol.png"},
+            "96": {"symbol": "Cm", "name": {"tr": "Küriyum", "en": "Curium"}, "description": {"en": "Radioactive. Don’t lick.", "tr": "Radyoaktif. Yalamayın."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Curium_symbol.png/220px-Curium_symbol.png"},
+            "97": {"symbol": "Bk", "name": {"tr": "Berkelyum", "en": "Berkelium"}, "description": {"en": "Radioactive. Don’t lick.", "tr": "Radyoaktif. Yalamayın."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Berkelium_symbol.png/220px-Berkelium_symbol.png"},
+            "98": {"symbol": "Cf", "name": {"tr": "Kaliforniyum", "en": "Californium"}, "description": {"en": "Radioactive. Don’t lick.", "tr": "Radyoaktif. Yalamayın."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Californium_symbol.png/220px-Californium_symbol.png"},
+            "99": {"symbol": "Es", "name": {"tr": "Einsteinyum", "en": "Einsteinium"}, "description": {"en": "Radioactive. Don’t lick.", "tr": "Radyoaktif. Yalamayın."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Einsteinium_symbol.png/220px-Einsteinium_symbol.png"},
+            "100": {"symbol": "Fm", "name": {"tr": "Fermiyum", "en": "Fermium"}, "description": {"en": "Radioactive. Don’t lick.", "tr": "Radyoaktif. Yalamayın."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Fermium_symbol.png/220px-Fermium_symbol.png"},
+            "101": {"symbol": "Md", "name": {"tr": "Mendelevyum", "en": "Mendelevium"}, "description": {"en": "Radioactive. Don’t lick.", "tr": "Radyoaktif. Yalamayın."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Mendelevium_symbol.png/220px-Mendelevium_symbol.png"},
+            "102": {"symbol": "No", "name": {"tr": "Nobelyum", "en": "Nobelium"}, "description": {"en": "Radioactive. Don’t lick.", "tr": "Radyoaktif. Yalamayın."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Nobelium_symbol.png/220px-Nobelium_symbol.png"},
+            "103": {"symbol": "Lr", "name": {"tr": "Lavrensiyum", "en": "Lawrencium"}, "description": {"en": "Radioactive. Don’t lick.", "tr": "Radyoaktif. Yalamayın."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Lawrencium_symbol.png/220px-Lawrencium_symbol.png"},
+            "104": {"symbol": "Rf", "name": {"tr": "Rutherfordyum", "en": "Rutherfordium"}, "description": {"en": "Synthetic and radioactive. Don’t lick.", "tr": "Sentetik ve radyoaktif. Yalamayın."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Rutherfordium_symbol.png/220px-Rutherfordium_symbol.png"},
+            "105": {"symbol": "Db", "name": {"tr": "Dubniyum", "en": "Dubnium"}, "description": {"en": "Synthetic and radioactive. Don’t lick.", "tr": "Sentetik ve radyoaktif. Yalamayın."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Dubnium_symbol.png/220px-Dubnium_symbol.png"},
+            "106": {"symbol": "Sg", "name": {"tr": "Seaborgiyum", "en": "Seaborgium"}, "description": {"en": "Synthetic and radioactive. Don’t lick.", "tr": "Sentetik ve radyoaktif. Yalamayın."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Seaborgium_symbol.png/220px-Seaborgium_symbol.png"},
+            "107": {"symbol": "Bh", "name": {"tr": "Bohriyum", "en": "Bohrium"}, "description": {"en": "Synthetic and radioactive. Don’t lick.", "tr": "Sentetik ve radyoaktif. Yalamayın."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Bohrium_symbol.png/220px-Bohrium_symbol.png"},
+            "108": {"symbol": "Hs", "name": {"tr": "Hassiyum", "en": "Hassium"}, "description": {"en": "Synthetic and radioactive. Don’t lick.", "tr": "Sentetik ve radyoaktif. Yalamayın."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Hassium_symbol.png/220px-Hassium_symbol.png"},
+            "109": {"symbol": "Mt", "name": {"tr": "Meitneriyum", "en": "Meitnerium"}, "description": {"en": "Synthetic and radioactive. Don’t lick.", "tr": "Sentetik ve radyoaktif. Yalamayın."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Meitnerium_symbol.png/220px-Meitnerium_symbol.png"},
+            "110": {"symbol": "Ds", "name": {"tr": "Darmstadtiyum", "en": "Darmstadtium"}, "description": {"en": "Synthetic and radioactive. Don’t lick.", "tr": "Sentetik ve radyoaktif. Yalamayın."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Darmstadtium_symbol.png/220px-Darmstadtium_symbol.png"},
+            "111": {"symbol": "Rg", "name": {"tr": "Röntgenyum", "en": "Roentgenium"}, "description": {"en": "Synthetic and radioactive. Don’t lick.", "tr": "Sentetik ve radyoaktif. Yalamayın."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Roentgenium_symbol.png/220px-Roentgenium_symbol.png"},
+            "112": {"symbol": "Cn", "name": {"tr": "Kopernikyum", "en": "Copernicium"}, "description": {"en": "Synthetic and radioactive. Don’t lick.", "tr": "Sentetik ve radyoaktif. Yalamayın."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Copernicium_symbol.png/220px-Copernicium_symbol.png"},
+            "113": {"symbol": "Nh", "name": {"tr": "Nihoniyum", "en": "Nihonium"}, "description": {"en": "Synthetic and radioactive. Don’t lick.", "tr": "Sentetik ve radyoaktif. Yalamayın."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Nihonium_symbol.png/220px-Nihonium_symbol.png"},
+            "114": {"symbol": "Fl", "name": {"tr": "Flerovyum", "en": "Flerovium"}, "description": {"en": "Synthetic and radioactive. Don’t lick.", "tr": "Sentetik ve radyoaktif. Yalamayın."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Flerovium_symbol.png/220px-Flerovium_symbol.png"},
+            "115": {"symbol": "Mc", "name": {"tr": "Moskavyum", "en": "Moscovium"}, "description": {"en": "Synthetic and radioactive. Don’t lick.", "tr": "Sentetik ve radyoaktif. Yalamayın."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Moscovium_symbol.png/220px-Moscovium_symbol.png"},
+            "116": {"symbol": "Lv", "name": {"tr": "Livermoryum", "en": "Livermorium"}, "description": {"en": "Synthetic and radioactive. Don’t lick.", "tr": "Sentetik ve radyoaktif. Yalamayın."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Livermorium_symbol.png/220px-Livermorium_symbol.png"},
+            "117": {"symbol": "Ts", "name": {"tr": "Tenesin", "en": "Tennessine"}, "description": {"en": "Synthetic and radioactive. Don’t lick.", "tr": "Sentetik ve radyoaktif. Yalamayın."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Tennessine_symbol.png/220px-Tennessine_symbol.png"},
+            "118": {"symbol": "Og", "name": {"tr": "Oganesson", "en": "Oganesson"}, "description": {"en": "Synthetic and radioactive. Don’t lick.", "tr": "Sentetik ve radyoaktif. Yalamayın."}, "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Oganesson_symbol.png/220px-Oganesson_symbol.png"}
         };
 
         function getLickabilityClass(description) {
@@ -320,28 +286,21 @@
 
         function getMainTablePosition(atomicNumber) {
             atomicNumber = parseInt(atomicNumber);
-            // Periyot 1
             if (atomicNumber === 1) return {row: 1, col: 1};
             if (atomicNumber === 2) return {row: 1, col: 18};
-            // Periyot 2
             if (atomicNumber >= 3 && atomicNumber <= 4) return {row: 2, col: atomicNumber - 2};
             if (atomicNumber >= 5 && atomicNumber <= 10) return {row: 2, col: atomicNumber + 8};
-            // Periyot 3
             if (atomicNumber >= 11 && atomicNumber <= 12) return {row: 3, col: atomicNumber - 10};
             if (atomicNumber >= 13 && atomicNumber <= 18) return {row: 3, col: atomicNumber - 4};
-            // Periyot 4
             if (atomicNumber >= 19 && atomicNumber <= 36) return {row: 4, col: atomicNumber - 18};
-            // Periyot 5
             if (atomicNumber >= 37 && atomicNumber <= 54) return {row: 5, col: atomicNumber - 36};
-            // Periyot 6 (Lantanidler hariç)
             if (atomicNumber === 55) return {row: 6, col: 1};
             if (atomicNumber === 56) return {row: 6, col: 2};
-            if (atomicNumber === 57) return {row: 6, col: 3}; // Lantanidler için yer tutucu
+            if (atomicNumber === 57) return {row: 6, col: 3};
             if (atomicNumber >= 72 && atomicNumber <= 86) return {row: 6, col: atomicNumber - 68};
-            // Periyot 7 (Aktinidler hariç)
             if (atomicNumber === 87) return {row: 7, col: 1};
             if (atomicNumber === 88) return {row: 7, col: 2};
-            if (atomicNumber === 89) return {row: 7, col: 3}; // Aktinidler için yer tutucu
+            if (atomicNumber === 89) return {row: 7, col: 3};
             if (atomicNumber >= 104 && atomicNumber <= 118) return {row: 7, col: atomicNumber - 100};
             return null;
         }
@@ -359,7 +318,10 @@
                 const elementDiv = document.createElement('div');
                 elementDiv.classList.add('element', lickability);
 
-                const tooltipText = `<span class="${lickability}">${translations[lang].lickability[lickability]}</span> ${element.description[lang]}`;
+                const tooltipText = `
+                    <img src="${element.image}" alt="${element.name[lang]}" style="max-height: 100px; max-width: 100%; display: block; margin: 0 auto 5px;">
+                    <span class="${lickability}">${translations[lang].lickability[lickability]}</span> ${element.description[lang]}
+                `;
                 elementDiv.innerHTML = `
                     <div class="number">${atomicNumber}</div>
                     <div class="symbol">${element.symbol}</div>
@@ -382,6 +344,29 @@
                     }
                 }
             }
+
+            adjustTooltipPosition();
+        }
+
+        function adjustTooltipPosition() {
+            const tooltips = document.querySelectorAll('.tooltip');
+            tooltips.forEach(tooltip => {
+                tooltip.parentElement.addEventListener('mouseover', () => {
+                    const rect = tooltip.getBoundingClientRect();
+                    const windowWidth = window.innerWidth;
+
+                    if (rect.left < 0) {
+                        tooltip.style.left = '0';
+                        tooltip.style.transform = 'translateX(0)';
+                    } else if (rect.right > windowWidth) {
+                        tooltip.style.left = '100%';
+                        tooltip.style.transform = 'translateX(-100%)';
+                    } else {
+                        tooltip.style.left = '50%';
+                        tooltip.style.transform = 'translateX(-50%)';
+                    }
+                });
+            });
         }
 
         function changeLanguage(lang) {
